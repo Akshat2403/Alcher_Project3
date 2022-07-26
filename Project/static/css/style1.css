@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    text-decoration: none;
+}
+span{
+    color: rgb(254, 104, 72);
+}
+h1{
+    display: inline-block;
+    color: rgb(145, 145, 145);
+    font-weight: 400;
+}
+img{
+    height: 25px;
+}
+p{
+    color: rgb(145, 145, 145);
+    display: inline-block;
+    margin-top: 39px;
+    font-size: 23px;
+}
+body{
+    padding-bottom: 10%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px ,1fr));
+}
+.head{
+    margin: 15%;
+    margin-top:40%;
+}
+.login{
+    display: flex;
+    margin: auto;
+    margin-top:115px;
+    flex-direction: column;
+    border-radius: 12px;
+    width: 300px;
+    height: 450px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.top{
+    box-sizing: border-box;
+    background-image: linear-gradient(to bottom right, rgb(254, 160, 133), rgb(254, 104, 72));
+    color: white;
+    border-radius: 12px 12px 0px 0px;
+    padding-bottom: 15px;
+}
+.main{
+    box-sizing: border-box;
+    padding: 15px;
+}
+h2{
+    margin: 15px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+.intop{
+    margin: 15px;
+    color: white;
+    font-size: 14px;
+    
+}
+form{
+    margin-top: 30px;
+}
+input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width:270px ;
+    height:25px ;
+    border-radius: 4px;
+    outline-color: rgb(145, 145, 145);
+    border:2px solid rgb(145, 145, 145);
+    resize: none;
+}
+label{
+    padding-top: 10px;
+}
+button{
+    margin-top: 30px;
+    width:270px ;
+    height:30px ;
+    background-color: white;
+    border:2px solid rgb(254, 104, 72);
+    border-radius: 4px;
+    color: rgb(254, 104, 72);
+}
+label{
+    color:rgb(145, 145, 145);
+}

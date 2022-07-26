@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+        <title>Alcheringa - {{ title}}</title>
+    {%else%}
+        <title>Alcheringa Connect</title>
+    {% endif %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+</head>
+<body>
+    <nav>
+        <img src="{% static 'assets/favicon.ico' %}" alt="" class="ico">
+        <h1>Alcheringa <span>Connect</span></h1>
+    </nav>
+    <main>
+        <div class="create-new-post">
+            <h2>Create New Post</h2>
+            <div class="create">
+                <form action="">
+                    <label for="image">Image</label>
+                    <input type="file" id="img" name="img" accept="image/*" placeholder="Upload An Image">
+                    <label for="Caption">Caption</label>
+                    <input type="text" title="Give an Image Caption" placeholder="Give the Image an Caption">
+                </form>
+                <div class="location">
+                    <h5>Current Location</h5>
+                    <h6 id="location">Give Location Permission</h6>
+                </div>
+            </div>
+            <button>Share</button>
+        </div>
+        <div class="side">
+        <div class="my-profile">
+            <div class="protop">
+                <h3 class="user">My Profile</h3>
+                <a href="{% url 'profile' %}"><img src="{% static 'assets/exit.png' %}" alt="" class="back"></a>
+            </div>
+            <div class="mpmain">
+                <div class="username">
+                    <img src="{% static 'assets/pic1.jpg'%}" alt="" class="username-pic">
+                    <h3>Name<br><span class="user_name">username</span> </h3>
+                </div>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga omnis rem tempore libero quaerat nisi fugiat aut qui?</p>
+                <a href="{% url 'posts' %}"><div class="my-posts">
+                    <img src="{% static 'assets/plus.svg' %}" alt="" class="plus">
+                    <h3>My Posts</h3>
+                </div></a>
+                <div class="saved">
+                    <img src="{% static 'assets/bookmark.png' %}" alt="" class="save">
+                    <h3>Saved Posts</h3>
+                </div>
+            </div>
+        </div>
+        <a href="{% url 'create' %}"><div class="new">
+            <img src="{% static 'assets/plus.svg' %}" alt="" class="plus">
+            <h3>Create New Post</h3>
+        </div> </a> 
+    </div>
+    </main>
+    <script>
+        const base='https://us1.locationiq.com/v1/reverse?key=pk.76dc2f013f6c23c3674d6f9c6991a279&lat='
+        const todo=async(lat,lon)=>{
+            const response= await fetch(base+lat+'&lon='+lon+'&format=json')
+            const data=await response.json()
+            return {
+                city : data.address.state_district,
+                state : data.address.state,
+                pincode : data.address.postcode
+            };
+        }
+        const out=(todo,lat,lon)=>{
+            const location=document.getElementById('location')
+            todo(lat,lon).then(data=>{
+                location.innerText=data.city+', '+data.state+', '+data.pincode
+            });
+        }
+        const successCallback= (position)=>{
+            console.log(position.coords)
+            const lat=position.coords.latitude
+            const lon=position.coords.longitude
+            console.log(lat,lon)
+            out(todo,lat,lon);
+        }
+        const errorCallback= (err)=>{
+            console.log(err)
+        }
+        navigator.geolocation.getCurrentPosition(successCallback,errorCallback);
+    </script>
+</body>
+</html>

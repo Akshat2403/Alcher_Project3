@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+        <title>Alcheringa - {{ title}}</title>
+    {%else%}
+        <title>Alcheringa Connect</title>
+    {% endif %}
+    {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+<body>
+    <div class="head">
+        <img src="{% static 'assets/favicon.ico' %}" alt="">
+        <h1>Alcheringa <span>Connect</span></h1>
+        <p>Alcheringa connect lets you associate with the people in your life</p>
+    </div>
+    
+    <div class="login">
+        <div class="top">
+            <h2>Login</h2>
+            <a href="" class="intop">Don't have an account</a>
+            <a href="" class="intop">Register Here</a>
+        </div>
+        <div class="main">
+            <form action="">
+                <label for="Username">Username</label>
+                <input type="text" name="Username" required>
+                <label for="Password">Password</label>
+                <input type="password" name="password" required>
+            </form>
+            <a href="{% url 'profile' %}"><button type="submit">Login</button></a>
+        </div>
+    </div>
+    
+</body>
+</html>

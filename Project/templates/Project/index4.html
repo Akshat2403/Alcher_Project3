@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+        <title>Alcheringa - {{ title}}</title>
+    {%else%}
+        <title>Alcheringa Connect</title>
+    {% endif %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style4.css' %}">
+</head>
+<body>
+    <nav>
+        <img src="{% static 'assets/favicon.ico' %}" alt="" class="ico">
+        <h1>Alcheringa <span>Connect</span></h1>
+    </nav>
+    <sub>
+        <h2>My Posts</h2>
+        <a href="{% url 'profile' %}">Go Back</a>
+    </sub>
+
+    <div class="posts">
+        {% for x in posts %}
+        <div class="post">
+            <img src="{% static 'assets/pic1.jpg' %}" alt="" class="pic">
+            <div class="bottom">
+                <div class="like-box">
+                    <img src="{% static 'assets/like.png' %}" alt="" class="like">
+                    <h5> {{ x.like }} likes</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>  
+</body>
+</html>
